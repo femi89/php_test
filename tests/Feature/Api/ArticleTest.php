@@ -50,6 +50,8 @@ class ArticleTest extends TestCase
 
         $response = $this->postJson(route('api.articles.store'), $data);
 
+        unset($data['image']);
+
         $this->assertDatabaseHas('articles', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -72,6 +74,8 @@ class ArticleTest extends TestCase
             route('api.articles.update', $article),
             $data
         );
+
+        unset($data['image']);
 
         $data['id'] = $article->id;
 

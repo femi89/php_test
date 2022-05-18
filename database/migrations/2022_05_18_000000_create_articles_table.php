@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('subject');
             $table->string('slug');
             $table->longText('body');
+            $table->string('image')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

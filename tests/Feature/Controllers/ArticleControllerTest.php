@@ -62,6 +62,8 @@ class ArticleControllerTest extends TestCase
 
         $response = $this->post(route('articles.store'), $data);
 
+        unset($data['image']);
+
         $this->assertDatabaseHas('articles', $data);
 
         $article = Article::latest('id')->first();
@@ -113,6 +115,8 @@ class ArticleControllerTest extends TestCase
         ];
 
         $response = $this->put(route('articles.update', $article), $data);
+
+        unset($data['image']);
 
         $data['id'] = $article->id;
 

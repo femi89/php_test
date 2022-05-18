@@ -22,10 +22,12 @@ class ArticleFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->text(255);
         return [
-            'subject' => $this->faker->text(255),
-            'slug' => $this->faker->slug,
+            'subject' => $title,
+            'slug' => Str::slug($title),
             'body' => $this->faker->text,
+            'image' => $this->faker->imageUrl(),
         ];
     }
 }
